@@ -21,7 +21,7 @@ MinCountourArea = 5000  #Adjust ths value according to your usage
 BinarizationThreshold = 80  #Adjust ths value according to your usage
 OffsetRefLines = 75  #Adjust ths value according to your usage
 
-#Check if an object in entering in monitored zone
+#Check if an object is entering in monitored zone
 def CheckEntranceLineCrossing(y, CoorYEntranceLine, CoorYExitLine):
   AbsDistance = abs(y - CoorYEntranceLine)	
   if ((AbsDistance <= 2) and (y < CoorYExitLine)):
