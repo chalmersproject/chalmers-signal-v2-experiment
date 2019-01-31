@@ -39,9 +39,17 @@ draw = ImageDraw.Draw(image)
 #draw a black filled box to clear the image
 #to prepare for text
 draw.rectangle((0,0,width,height), outline=0,fill=0)
-#Draw some shapes
-#First define some constants to allow for easy resizing shapes
+# Draw some shapes.
+# First define some constants to allow easy resizing of shapes.
+padding = -2
+top = padding
+bottom = height-padding
+# Move left to right keeping track of the current x position for drawing shapes.
+x = 0
 
+
+# Load default font.
+font = ImageFont.load_default()
 
 #global variables
 width = 0
@@ -114,6 +122,11 @@ ReferenceFrame = None
 
 # capture frames from the camera
 for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=True):
+    #update OLED LCD
+    draw.text((x, top),       "Entrance Counter" + str(EntranceCounter),  font=font, fill=255)
+    draw.text((x, top+8),     "Exit Counter" + str(ExitCounter), font=font, fill=255)
+    disp.image(image)
+    disp.display()
 
 	# grab the raw NumPy array representing the image
     image = frame.array
