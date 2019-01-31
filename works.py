@@ -124,14 +124,16 @@ ReferenceFrame = None
 for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=True):
     #update OLED LCD
     # Draw a black filled box to clear the oled dislay image.
-    global EntranceCounter
-    global ExitCounter
+    # global EntranceCounter
+    # global ExitCounter
     draw.rectangle((0,0,width,height), outline=0, fill=0)
+    disp.image(screen_image)
+    disp.display()
     draw.text((x, top+8),       "Entrance Counter = " + str(EntranceCounter),  font=font, fill=255)
     draw.text((x, top+24),     "Exit Counter = " + str(ExitCounter), font=font, fill=255)
     disp.image(screen_image)
     disp.display()
-    time.sleep(0.1)
+    # time.sleep(0.1)
     # Draw a black filled box to clear the oled dislay image.
     draw.rectangle((0,0,width,height), outline=0, fill=0)
 
