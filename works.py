@@ -17,8 +17,6 @@ import RPi.GPIO as GPIO
 GPIO.setmode(GPIO.BOARD)
 #Set GPIO pin 26 to input pullup
 GPIO.setup(22, GPIO.IN, pull_up_down=GPIO.PUD_UP)
-#Add interrupt for GPIO pin
-GPIO.add_event_detect(22, GPIO.BOTH, callback=buttonPressed)
 #define what happens when button is pressed
 def buttonPressed(channel):
     if GPIO.input(22):
@@ -27,6 +25,9 @@ def buttonPressed(channel):
         print "pressed"
         EntranceCounter +=1
         sleep(0.1)
+#Add interrupt for GPIO pin
+GPIO.add_event_detect(22, GPIO.BOTH, callback=buttonPressed)
+
 
 #global variables
 width = 0
