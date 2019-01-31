@@ -18,7 +18,7 @@ GPIO.setmode(GPIO.BOARD)
 #Set GPIO pin 26 to input pullup
 GPIO.setup(22, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 #Add interrupt for GPIO pin
-GPIO.add_event_detect(22, GPIO.BOTH, callback=buttonPressed())
+GPIO.add_event_detect(22, GPIO.BOTH, callback=buttonPressed)
 #define what happens when button is pressed
 def buttonPressed(channel):
     if GPIO.input(22):
