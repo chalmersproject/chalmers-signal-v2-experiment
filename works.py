@@ -25,8 +25,7 @@ def buttonPressed(channel):
         print "pressed"
         EntranceCounter +=1
         sleep(0.1)
-#Add interrupt for GPIO pin
-GPIO.add_event_detect(22, GPIO.BOTH, callback=buttonPressed)
+
 
 
 #global variables
@@ -73,6 +72,8 @@ ReferenceFrame = None
 
 # capture frames from the camera
 for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=True):
+    #Add interrupt for GPIO pin
+    GPIO.add_event_detect(22, GPIO.BOTH, callback=buttonPressed)
 	# grab the raw NumPy array representing the image
     image = frame.array
     vs = frame.array
