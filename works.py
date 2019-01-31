@@ -12,18 +12,18 @@ import argparse
 #GPIO library for buttons
 import RPi.GPIO as GPIO
 # display libraries
-# import Adafruit_GPIO.SPI as SPI
-# import Adafruit_SSD1306
-# from PIL import Image
-# from PIL import ImageDraw
-# from PIL import ImageFont
-#
-# #declare and instantiate display
-# RST = None
-# DC = 23
-# SPI_PORT = 0
-# SPI_DEVICE = 0
-# disp = Adafruit_SSD1306.SSD1306_128_32(rst=RST)
+#import Adafruit_GPIO.SPI as SPI
+import Adafruit_SSD1306
+from PIL import Image
+from PIL import ImageDraw
+from PIL import ImageFont
+
+#declare and instantiate display
+RST = None
+DC = 23
+SPI_PORT = 0
+SPI_DEVICE = 0
+disp = Adafruit_SSD1306.SSD1306_128_32(rst=RST)
 
 #global variables
 width = 0
