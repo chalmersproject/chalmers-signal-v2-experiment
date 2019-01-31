@@ -49,13 +49,13 @@ def buttonPressed(channel):
     else:
         print "Green Button pressed"
         EntranceCounter = EntranceCounter + 1
-        sleep(1)
+        time.sleep(1)
     if GPIO.input(32):
         print "Red button released"
     else:
         print "Red Button pressed"
         ExitCounter = ExitCounter + 1
-        sleep(1)
+        time.sleep(1)
 
 #Add interrupt for Green/Red Button GPIO pins
 GPIO.add_event_detect(37, GPIO.BOTH, callback=buttonPressed)
