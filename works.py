@@ -123,10 +123,11 @@ ReferenceFrame = None
 # capture frames from the camera
 for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=True):
     #update OLED LCD
-    draw.text((x, top),       "Entrance Counter" + str(EntranceCounter),  font=font, fill=255)
-    draw.text((x, top+8),     "Exit Counter" + str(ExitCounter), font=font, fill=255)
-    disp.image(image)
+    draw.text((x, top+8),       "Entrance Counter = " + str(EntranceCounter),  font=font, fill=255)
+    draw.text((x, top+24),     "Exit Counter = " + str(ExitCounter), font=font, fill=255)
+    # disp.image(image)
     disp.display()
+    disp.clear()
 
 	# grab the raw NumPy array representing the image
     image = frame.array
