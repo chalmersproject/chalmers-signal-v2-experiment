@@ -54,7 +54,7 @@ font = ImageFont.load_default()
 #global variables
 width = 0
 height = 0
-EntranceCounter = 0
+EntranceCounter = 1
 ExitCounter = 0
 MinCountourArea = 5000  #Adjust ths value according to your usage
 BinarizationThreshold = 90  #Adjust ths value according to your usage
@@ -127,14 +127,10 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
     # global EntranceCounter
     # global ExitCounter
     draw.rectangle((0,0,width,height), outline=0, fill=0)
-    disp.display()
     draw.text((x, top+8),       "Entrance Counter = " + EntranceCounter,  font=font, fill=255)
     draw.text((x, top+24),     "Exit Counter = " + ExitCounter, font=font, fill=255)
     disp.image(screen_image)
     disp.display()
-    # time.sleep(0.1)
-    # Draw a black filled box to clear the oled dislay image.
-    draw.rectangle((0,0,width,height), outline=0, fill=0)
 
 	# grab the raw NumPy array representing the image
     image = frame.array
