@@ -130,6 +130,7 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
     disp.image(screen_image)
     disp.display()
     time.sleep(0.1)
+    disp.clear()
 
 	# grab the raw NumPy array representing the image
     image = frame.array
