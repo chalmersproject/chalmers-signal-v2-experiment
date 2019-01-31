@@ -129,7 +129,7 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
     displayCounter = EntranceCounter - ExitCounter
     # displayExit = ExitCounter
     draw.rectangle((0, 0, width, height), outline=0, fill=0)
-    draw.text((x, top+8),       "Counter = " + str(displayEntrance),  font=font, fill=255)
+    draw.text((x, top+8),       "Counter = " + str(displayCounter),  font=font, fill=255)
     # draw.text((x, top+24),     "Exit Counter = " + str(displayExit), font=font, fill=255)
     disp.image(screen_image)
     disp.display()
