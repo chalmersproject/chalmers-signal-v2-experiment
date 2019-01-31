@@ -13,6 +13,15 @@ import argparse
 import imutils
 import RPi.GPIO as GPIO
 
+#global variables
+width = 0
+height = 0
+EntranceCounter = 0
+ExitCounter = 0
+MinCountourArea = 5000  #Adjust ths value according to your usage
+BinarizationThreshold = 90  #Adjust ths value according to your usage
+OffsetRefLines = 75  #Adjust ths value according to your usage
+
 #Set GPIO pins to default board breakout
 GPIO.setmode(GPIO.BOARD)
 #Set GPIO pin 37 to input pullup
@@ -29,14 +38,6 @@ def buttonPressed(channel):
 GPIO.add_event_detect(37, GPIO.BOTH, callback=buttonPressed)
 
 
-#global variables
-width = 0
-height = 0
-EntranceCounter = 0
-ExitCounter = 0
-MinCountourArea = 5000  #Adjust ths value according to your usage
-BinarizationThreshold = 90  #Adjust ths value according to your usage
-OffsetRefLines = 75  #Adjust ths value according to your usage
 
 #Check if an object is entering in monitored zone
 def CheckEntranceLineCrossing(y, CoorYEntranceLine, CoorYExitLine):
