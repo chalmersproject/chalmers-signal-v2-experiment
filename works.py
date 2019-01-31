@@ -42,6 +42,8 @@ GPIO.setup(37, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 GPIO.setup(32, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 #define what happens when button is pressed
 def buttonPressed(channel):
+    global EntranceCounter
+    global ExitCounter
     if GPIO.input(37):
         print "Green button released"
     else:
