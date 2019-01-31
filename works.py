@@ -32,7 +32,7 @@ def buttonPressed(channel):
         print "button released"
     else:
         print "pressed"
-        EntranceCounter +=1
+        EntranceCounter = EntranceCounter + 1
         sleep(0.1)
 #Add interrupt for GPIO pin
 GPIO.add_event_detect(37, GPIO.BOTH, callback=buttonPressed)
