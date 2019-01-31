@@ -26,7 +26,7 @@ def buttonPressed(channel):
         EntranceCounter +=1
         sleep(0.1)
 #Add interrupt for GPIO pin
-GPIO.add_event_detect(22, GPIO.BOTH, callback=buttonPressed)
+GPIO.add_event_detect(26, GPIO.BOTH, callback=buttonPressed)
 
 
 #global variables
