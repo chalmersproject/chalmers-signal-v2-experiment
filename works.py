@@ -55,8 +55,9 @@ def buttonPressed(channel):
         ExitCounter = ExitCounter + 1
         sleep(0.1)
 
-#Add interrupt for GPIO pin
+#Add interrupt for Green/Red Button GPIO pins
 GPIO.add_event_detect(37, GPIO.BOTH, callback=buttonPressed)
+GPIO.add_event_detect(32, GPIO.BOTH, callback=buttonPressed)
 
 
 
