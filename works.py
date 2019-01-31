@@ -12,7 +12,7 @@ import argparse
 #GPIO library for buttons
 import RPi.GPIO as GPIO
 # display libraries
-#import Adafruit_GPIO.SPI as SPI
+import Adafruit_GPIO.SPI as SPI
 import Adafruit_SSD1306
 from PIL import Image
 from PIL import ImageDraw
@@ -24,6 +24,24 @@ DC = 23
 SPI_PORT = 0
 SPI_DEVICE = 0
 disp = Adafruit_SSD1306.SSD1306_128_32(rst=RST)
+# Initialize library.
+disp.begin()
+# Clear display.
+disp.clear()
+disp.display()
+# create blank image
+#use mode '1' for 1-bit color
+width = disp.width
+height = disp.height
+image = Image.new('1', (width,height))
+#Get drawing object to draw on image
+draw = ImageDraw.Draw(image)
+#draw a black filled box to clear the image
+#to prepare for text
+draw.rectangle((0,0,width,height), outline=0,fill=0)
+#Draw some shapes
+#First define some constants to allow for easy resizing shapes
+
 
 #global variables
 width = 0
@@ -35,7 +53,7 @@ BinarizationThreshold = 90  #Adjust ths value according to your usage
 OffsetRefLines = 75  #Adjust ths value according to your usage
 
 #Set GPIO pins to default board breakout
-GPIO.setmode(GPIO.BOARD)
+# GPIO.setmode(GPIO.BOARD)
 #Set Green Button GPIO pin 37 to input pullup
 GPIO.setup(16, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 #Set Red Button GPIO pin 37 to input pullup
@@ -60,8 +78,6 @@ def buttonPressed(channel):
 #Add interrupt for Green/Red Button GPIO pins
 GPIO.add_event_detect(37, GPIO.BOTH, callback=buttonPressed)
 GPIO.add_event_detect(32, GPIO.BOTH, callback=buttonPressed)
-
-
 
 #Check if an object is entering in monitored zone
 def CheckEntranceLineCrossing(y, CoorYEntranceLine, CoorYExitLine):
