@@ -76,8 +76,8 @@ def buttonPressed(channel):
         time.sleep(0.2)
 
 #Add interrupt for Green/Red Button GPIO pins
-GPIO.add_event_detect(37, GPIO.BOTH, callback=buttonPressed)
-GPIO.add_event_detect(32, GPIO.BOTH, callback=buttonPressed)
+GPIO.add_event_detect(16, GPIO.BOTH, callback=buttonPressed)
+GPIO.add_event_detect(26, GPIO.BOTH, callback=buttonPressed)
 
 #Check if an object is entering in monitored zone
 def CheckEntranceLineCrossing(y, CoorYEntranceLine, CoorYExitLine):
