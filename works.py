@@ -1,17 +1,29 @@
-#This is the simple one
 import datetime
 import math
 import cv2
 import numpy as np
-from picamera.array import PiRGBArray
 from picamera import PiCamera
+from picamera.array import PiRGBArray
 import time
+import imutils
 from imutils.video import VideoStream
 from imutils.video import FPS
-import numpy as np
 import argparse
-import imutils
+#GPIO library for buttons
 import RPi.GPIO as GPIO
+# display libraries
+import Adafruit_GPIO.SPI as SPI
+import Adafruit_SSD1306
+from PIL import Image
+from PIL import ImageDraw
+from PIL import ImageFont
+
+#declare and instantiate display
+RST = None
+DC = 23
+SPI_PORT = 0
+SPI_DEVICE = 0
+disp = Adafruit_SSD1306.SSD1306_128_32(rst=RST)
 
 #global variables
 width = 0
@@ -24,16 +36,25 @@ OffsetRefLines = 75  #Adjust ths value according to your usage
 
 #Set GPIO pins to default board breakout
 GPIO.setmode(GPIO.BOARD)
-#Set GPIO pin 37 to input pullup
+#Set Green Button GPIO pin 37 to input pullup
 GPIO.setup(37, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+#Set Red Button GPIO pin 37 to input pullup
+GPIO.setup(32, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 #define what happens when button is pressed
 def buttonPressed(channel):
     if GPIO.input(37):
-        print "button released"
+        print "Green button released"
     else:
-        print "pressed"
+        print "Green Button pressed"
         EntranceCounter = EntranceCounter + 1
         sleep(0.1)
+    if GPIO.input(32):
+        print "Red button released"
+    else:
+        print "Red Button pressed"
+        ExitCounter = ExitCounter + 1
+        sleep(0.1)
+
 #Add interrupt for GPIO pin
 GPIO.add_event_detect(37, GPIO.BOTH, callback=buttonPressed)
 
