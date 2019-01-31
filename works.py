@@ -37,20 +37,20 @@ OffsetRefLines = 75  #Adjust ths value according to your usage
 #Set GPIO pins to default board breakout
 GPIO.setmode(GPIO.BOARD)
 #Set Green Button GPIO pin 37 to input pullup
-GPIO.setup(37, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+GPIO.setup(16, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 #Set Red Button GPIO pin 37 to input pullup
-GPIO.setup(32, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+GPIO.setup(26, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 #define what happens when button is pressed
 def buttonPressed(channel):
     global EntranceCounter
     global ExitCounter
-    if GPIO.input(37):
+    if GPIO.input(16):
         print "Green button released"
     else:
         print "Green Button pressed"
         EntranceCounter = EntranceCounter + 1
         time.sleep(0.2)
-    if GPIO.input(32):
+    if GPIO.input(26):
         print "Red button released"
     else:
         print "Red Button pressed"
