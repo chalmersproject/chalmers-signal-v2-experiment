@@ -38,6 +38,7 @@ def CheckExitLineCrossing(y, CoorYEntranceLine, CoorYExitLine):
 		return 0
 
 #initialize the Camera
+##force 640x480 webcam resolution
 camera = PiCamera()
 camera.resolution = (640, 480)
 camera.framerate = 32
@@ -47,7 +48,7 @@ time.sleep(0.1)
 
 W = 640
 H = 480
-##force 640x480 webcam resolution
+
 #camera.set(3,640)
 #camera.set(4,480)
 # grab an image from the camera
@@ -55,8 +56,7 @@ ReferenceFrame = None
 
 # capture frames from the camera
 for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=True):
-	# grab the raw NumPy array representing the image, then initialize the timestamp
-	# and occupied/unoccupied text
+	# grab the raw NumPy array representing the image
     image = frame.array
     vs = frame.array
 #    height = np.size(vs,0)
@@ -73,8 +73,6 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
     FrameThresh = cv2.threshold(FrameDelta, BinarizationThreshold, 255, cv2.THRESH_BINARY)[1]
 
 #    #Background subtraction and image binarization
-#    FrameDelta = cv2.absdiff(ReferenceFrame, GrayFrame)
-#    FrameThresh = cv2.threshold(FrameDelta, BinarizationThreshold, 255, cv2.THRESH_BINARY)[1]
     FrameThresh = cv2.dilate(FrameThresh, None, iterations=3)
     #cnts = cv2.findContours(FrameThresh.copy(), cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
     major = cv2.__version__.split('.')[0]
@@ -128,6 +126,7 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
 
 	# show the frame
     cv2.imshow("Frame", image)
+    cv2.imshow("Thresh", FrameThresh)
     key = cv2.waitKey(1) & 0xFF
  	# clear the stream in preparation for the next frame
     rawCapture.truncate(0)
