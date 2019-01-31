@@ -33,9 +33,9 @@ disp.display()
 #use mode '1' for 1-bit color
 width = disp.width
 height = disp.height
-image = Image.new('1', (width,height))
+screen_image = Image.new('1', (width,height))
 #Get drawing object to draw on image
-draw = ImageDraw.Draw(image)
+draw = ImageDraw.Draw(screen_image)
 #draw a black filled box to clear the image
 #to prepare for text
 draw.rectangle((0,0,width,height), outline=0,fill=0)
@@ -127,7 +127,7 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
     draw.rectangle((0,0,width,height), outline=0, fill=0)
     draw.text((x, top+8),       "Entrance Counter = " + str(EntranceCounter),  font=font, fill=255)
     draw.text((x, top+24),     "Exit Counter = " + str(ExitCounter), font=font, fill=255)
-    disp.image(image)
+    disp.image(screen_image)
     disp.display()
     time.sleep(0.1)
 
