@@ -127,7 +127,7 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
     draw.text((x, top+24),     "Exit Counter = " + str(ExitCounter), font=font, fill=255)
     # disp.image(image)
     disp.display()
-    disp.clear()
+    # disp.clear()
 
 	# grab the raw NumPy array representing the image
     image = frame.array
