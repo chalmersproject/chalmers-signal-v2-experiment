@@ -11,6 +11,22 @@ from imutils.video import FPS
 import numpy as np
 import argparse
 import imutils
+import RPi.GPIO as GPIO
+
+#Set GPIO pins to default board breakout
+GPIO.setmode(GPIO.BOARD)
+#Set GPIO pin 26 to input pullup
+GPIO.setup(22, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+#Add interrupt for GPIO pin
+GPIO.add_event_detect(22, GPIO.BOTH, callback=buttonPressed())
+#define what happens when button is pressed
+def buttonPressed(channel):
+    if GPIO.input(22):
+        print "button released"
+    else:
+        print "pressed"
+        EntranceCounter +=1
+        sleep(0.1)
 
 #global variables
 width = 0
@@ -136,14 +152,4 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
         camera.close()
         cv2.destroyAllWindows()
         break
-
-
-    #Dilate image and find all the contours
-
-#
-#    cv2.waitKey(1);
-
-
-# cleanup the camera and close any open windows
-#camera.close()
-#cv2.destroyAllWindows()
+    if
