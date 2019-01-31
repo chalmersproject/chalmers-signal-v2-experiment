@@ -152,4 +152,3 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
         camera.close()
         cv2.destroyAllWindows()
         break
-    if
