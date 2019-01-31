@@ -15,18 +15,18 @@ import RPi.GPIO as GPIO
 
 #Set GPIO pins to default board breakout
 GPIO.setmode(GPIO.BOARD)
-#Set GPIO pin 26 to input pullup
-GPIO.setup(26, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+#Set GPIO pin 37 to input pullup
+GPIO.setup(37, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 #define what happens when button is pressed
 def buttonPressed(channel):
-    if GPIO.input(26):
+    if GPIO.input(37):
         print "button released"
     else:
         print "pressed"
         EntranceCounter +=1
         sleep(0.1)
 #Add interrupt for GPIO pin
-GPIO.add_event_detect(26, GPIO.BOTH, callback=buttonPressed)
+GPIO.add_event_detect(37, GPIO.BOTH, callback=buttonPressed)
 
 
 #global variables
