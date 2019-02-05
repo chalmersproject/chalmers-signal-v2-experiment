@@ -47,9 +47,17 @@ bottom = height-padding
 # Move left to right keeping track of the current x position for drawing shapes.
 x = 0
 
-
 # Load default font.
 font = ImageFont.load_default()
+displayCounter = EntranceCounter - ExitCounter
+# displayExit = ExitCounter
+draw.rectangle((0, 0, width, height), outline=0, fill=0)
+draw.text((x+3, top+8), "Chalmers")
+draw.text((x+3, top+16), "Signal")
+# draw.text((x, top+24),     "Exit Counter = " + str(displayExit), font=font, fill=255)
+disp.image(displayImage)
+disp.display()
+
 
 #global variables
 width = 0
@@ -122,19 +130,6 @@ ReferenceFrame = None
 
 # capture frames from the camera
 for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=True):
-    #update OLED LCD
-    # Draw a black filled box to clear the oled dislay image.
-    # global EntranceCounter
-    # global ExitCounter
-    displayCounter = EntranceCounter - ExitCounter
-    # displayExit = ExitCounter
-    screen_image = draw.rectangle((0, 0, width, height), outline=0, fill=0)
-    draw.text((x, top+8),       "Counter = " + str(displayCounter),  font=font, fill=255)
-    # draw.text((x, top+24),     "Exit Counter = " + str(displayExit), font=font, fill=255)
-    disp.image(screen_image)
-    disp.display()
-    time.sleep(0.1)
-
 	# grab the raw NumPy array representing the image
     image = frame.array
     vs = frame.array
