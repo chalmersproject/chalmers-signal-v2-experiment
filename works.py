@@ -49,12 +49,9 @@ x = 0
 
 # Load default font.
 font = ImageFont.load_default()
-displayCounter = EntranceCounter - ExitCounter
-# displayExit = ExitCounter
 draw.rectangle((0, 0, width, height), outline=0, fill=0)
 draw.text((x+3, top+8), "Chalmers")
 draw.text((x+3, top+16), "Signal")
-# draw.text((x, top+24),     "Exit Counter = " + str(displayExit), font=font, fill=255)
 disp.image(displayImage)
 disp.display()
 
