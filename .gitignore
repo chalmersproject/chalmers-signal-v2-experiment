@@ -2,3 +2,5 @@ mobilenet_ssd
 output
 pyimagesearch
 videos
+# Virtual Env
+venv
